@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="container text-center my-4">
+        <h3>Registrar Recepcion</h3>        
+    </div>
+    <form (ngSubmit) = "onSubmit()" ngNativeValidate>      
+        <label for="producto" class="form-label">Producto</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)] = "recepcion.producto" name="producto" required id="producto">
+            <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+        </select>
+        <label for="proveedor" class="form-label">Proveedor</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)] = "recepcion.proveedor" name="proveedor" required id="proveedor">
+            <option *ngFor="let proveedor of proveedores" [ngValue]="proveedor">{{proveedor.nombre}}</option>
+        </select>
+        <div class="mb-3">
+            <label for="fechaRecepcion" class="form-label">Fecha Recepcion</label>
+            <input type="date" class="form-control" id="fechaRecepcion" 
+                   [ngModel]="recepcion.fechaRecepcion ? (recepcion.fechaRecepcion | date:'yyyy-MM-dd') : ''"
+                   (ngModelChange)="recepcion.fechaRecepcion = $event"
+                   required name="fechaRecepcion">
+        </div>
+        <div class="mb-3">
+            <label for="numeroFactura" class="form-label">Numero Factura</label>
+            <input type="text" class="form-control" id="numeroFactura" [(ngModel)] ="recepcion.numeroFactura" required name="numeroFactura">
+          </div>
+          <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" [(ngModel)] ="recepcion.cantidad" required name="cantidad">
+          </div>
+          <div class="mb-3">
+            <label for="registroInvima" class="form-label">Registro Invima</label>
+            <input type="text" class="form-control" id="registroInvima" [(ngModel)] ="recepcion.registroInvima" required name="registroInvima">
+          </div>
+          <div class="mb-3">
+            <label for="fechaVencimiento" class="form-label">Fecha Vencimiento</label>
+            <input type="date" class="form-control" id="fechaVencimiento" 
+                   [ngModel]="recepcion.fechaVencimiento ? (recepcion.fechaVencimiento | date:'yyyy-MM-dd') : ''"
+                   (ngModelChange)="recepcion.fechaVencimiento = $event"
+                   name="fechaVencimiento">
+        </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="descripcion" [(ngModel)] ="recepcion.descripcion" required name="descripcion">
+              </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary me-3 btn-sm">Guardar</button>
+            <a href="/recepcion" class="btn btn-danger btn-sm">Regresar</a>
+          </div>        
+      </form>
+</div>

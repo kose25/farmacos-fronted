@@ -1,0 +1,42 @@
+<div class="container text-center my-4">
+    <h3>Sistema Farmacos Recepcion</h3>
+</div> 
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nombre Producto</th>
+        <th scope="col">Codigo Producto</th>
+        <th scope="col">Proveedor</th>
+        <th scope="col">Fecha Recepcion</th>
+        <th scope="col">Numero Factura</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Registro Invima</th>
+        <th scope="col">fecha Vencimiento</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">estado</th>
+        <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let recepcion of recepciones">
+        <th scope="row">{{recepcion.id}}</th>
+        <td>{{recepcion.producto.nombre}}</td>
+        <td>{{recepcion.producto.codigo}}</td>
+        <td>{{recepcion.proveedor.nombre}}</td>
+        <td>{{recepcion.fechaRecepcion | date:"dd/MM/YYY"}}</td>
+        <td>{{recepcion.numeroFactura}}</td>
+        <td>{{recepcion.cantidad}}</td>
+        <td>{{recepcion.registroInvima}}</td>
+        <td>{{recepcion.fechaVencimiento | date:"dd/MM/YYY"}}</td>
+        <td>{{recepcion.descripcion}}</td>
+        <td>{{recepcion.estado.nombre}}</td>
+        <td class="text-center">
+            <div>
+            <button class="btn btn-warning btn-sm me-3" (click)="editarRecepcion(recepcion.id)"><i class="fa-solid fa-pencil"></i></button>
+            <button class="btn btn-danger btn-sm me-3" (click)="eliminarRecepcion(recepcion.id)"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </td>
+        </tr>          
+    </tbody>
+    </table>
